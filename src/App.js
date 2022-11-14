@@ -1,9 +1,9 @@
 import './App.css';
 import Entry from './components/Entry';
+import Forecast from './components/Forecast';
 import TempDetails from './components/TempDetails';
 import TimeLocation from './components/TimeLocation';
 import TopButtons from './components/TopButtons';
-//import UilReact from '@iconscout/react-unicons/icons/uil-react'
 
 function App() {
   return (
@@ -14,6 +14,9 @@ function App() {
         <Entry/>
         <TimeLocation/>
         <TempDetails/>
+        <Forecast title="Hourly Forecast"/>
+        <Forecast title="Daily Forecast"/>
+
       </div>
   );
 }

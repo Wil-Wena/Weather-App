@@ -36,6 +36,8 @@ function TempDetails() {
                 </div>
 
             </div>
+            
+            {/* Temperature deatials consisting of sunset and respective time intervals */}
              <div className='flex flex-row items-center justify-center space-x-2 py-3 text-sm'>
                     <UilSun />
                     <p className='font-light'> Rise:
