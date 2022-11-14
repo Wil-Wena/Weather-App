@@ -6,6 +6,8 @@ import {
     UilWind,
     UilSun,
     UilSunset,
+    UilArrowUp,
+    UilArrowDown
 } from "@iconscout/react-unicons";
 
 function TempDetails() {
@@ -32,7 +34,33 @@ function TempDetails() {
                         <span className='font-medium ml-1'>3 km/h</span>
                     </div>
                 </div>
+
             </div>
+             <div className='flex flex-row items-center justify-center space-x-2 py-3 text-sm'>
+                    <UilSun />
+                    <p className='font-light'> Rise:
+                        <span className='font-medium ml-1'>08:00 AM</span>
+                    </p>
+                    <p className='font-light'>|</p>
+
+                    <UilSunset />
+                    <p className='font-light'> Sunset:
+                        <span className='font-medium ml-1'>1:30 PM</span>
+                    </p>
+                    <p className='font-light'>|</p>
+
+                    <UilArrowUp />
+                    <p className='font-light'> High:
+                        <span className='font-medium ml-1'>70°</span>
+                    </p>
+                    <p className='font-light'>|</p>
+
+                     <UilArrowDown />
+                    <p className='font-light'> Low:
+                        <span className='font-medium ml-1'>20°</span>
+                    </p>
+            </div> 
+            
         </div>
     )
 }
