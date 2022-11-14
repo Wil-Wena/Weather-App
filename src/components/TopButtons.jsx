@@ -5,7 +5,7 @@ function TopButtons() {
     const cities =[
         {
             id:1,
-            title: 'Ghana'
+            title: 'Accra'
         },
         {
             id:2,
