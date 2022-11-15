@@ -4,8 +4,17 @@ import Forecast from './components/Forecast';
 import TempDetails from './components/TempDetails';
 import TimeLocation from './components/TimeLocation';
 import TopButtons from './components/TopButtons';
+import getWeatherData from './services/Weather';
 
 function App() {
+
+  const fetchWeather =async  () =>{
+   const data = await getWeatherData('weather', { q: 'Accra' });
+   console.log(data);
+  };
+
+  fetchWeather();
+
   return (
 
     //Bigger div containing the size of the container
