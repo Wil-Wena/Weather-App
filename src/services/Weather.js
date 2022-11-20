@@ -1,4 +1,5 @@
-import { data } from "autoprefixer";
+import {DateTime} from "luxon";
+
 
 const API_KEY = "e8c7152b492d98e40d86aa94b269f823";
 
@@ -30,15 +31,49 @@ const formatCurrentWeather = (data) => {
         lat, lon, temp, temp_min, feels_like, temp_max, humidity,
         name, dt, country, sunrise, sunset, details, speed,icon
     }
+}
+const formatForecastWeather = (data) => {
+    let {timezone, daily, hourly}= data;
+    //Returns Daily Reports
+    daily = daily.slice(1,6).map((m) =>{ 
+        return {
+            title: formatToLocalTime(m.dt, timezone, 'ccc'),
+            temp: m.temp.day,
+            icon: m.weather[0].icon
+        }
+    }
+    );
 
+
+    //Returns Hourly Reports
+    hourly =hourly.slice(1,6).map((m) =>{ 
+        return {
+            title: formatToLocalTime(m.dt, timezone, 'ccc'),
+            temp: m.temp.day,
+            icon: m.weather[0].icon
+        }
+    }
+    );
+
+    return {timezone, daily, hourly}
 }
 
 const getFormattedWeatherData = async (searchParams) => {
     const formattedCurrentWeather = await getWeatherData('weather', searchParams).then(formatCurrentWeather)
 
-    return formattedCurrentWeather
+    const {lat,lon}= formattedCurrentWeather
+
+    const formattedForecastWeather = await getWeatherData('onecall',
+    {
+        lat,lon, exclude: 'current, minutely,alerts', units: searchParams.units
+    }).then(formatForecastWeather)
+    
+
+    return {...formattedCurrentWeather, ...formattedForecastWeather}
 
 }
+
+const formatToLocalTime = (secs, zone,format ="cccc, dd LLL yyyy' | Local time: 'hh:mm a") => DateTime.fromSeconds(secs).setZone(zone).toFormat(format)
 
 
 
